@@ -1,0 +1,163 @@
+:root {
+  --accent: #ff825f;
+  --accent-light: #ffefe9;
+  --accent-border: #ffa88e;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --line: #ececec;
+  --card-bg: #fff;
+  --radius: 18px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Tarjeta principal */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cinta de mes (parte superior) */
+.ribbon {
+  display: inline-block;
+  background: #2b2b2b;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+/* Etiqueta tipo "Compañera junior" */
+.badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 600;
+  border: 1px solid var(--accent-border);
+  margin-bottom: 10px;
+}
+
+/* Contenedor del contenido */
+.item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid var(--accent-light);
+}
+
+/* Texto */
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.desc {
+  font-size: 15px;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Acciones */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btnghost {
+  background: #fff;
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnghost:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+  .card {
+    padding: 14px;
+  }
+  .item {
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+  }
+  .avatar {
+    width: 110px;
+    height: 110px;
+  }
+  .name { font-size: 17px; }
+  .meta { font-size: 13px; }
+  .desc { font-size: 14.5px; }
+  .actions { flex-wrap: wrap; }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .item {
+    grid-template-columns: 1fr; /* pila imagen + texto */
+    gap: 12px;
+  }
+  .avatar {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;       /* mantiene formato cuadrado sin forzar altura fija */
+    border-radius: 12px;
+  }
+  .ribbon,
+  .badge {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  .name { font-size: 16px; }
+  .meta { font-size: 13px; }
+  .desc { font-size: 14px; }
+  .actions {
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .btnghost {
+    padding: 8px 12px;
+    border-radius: 8px;
+    flex: 1 1 auto; /* botones se distribuyen mejor en varias líneas */
+  }
+}
+
+/* Muy pequeños (opcional) */
+@media (max-width: 380px) {
+  .card { padding: 12px; }
+  .btnghost { font-size: 14px; }
+}

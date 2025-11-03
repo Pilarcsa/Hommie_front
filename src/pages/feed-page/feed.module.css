@@ -1,0 +1,250 @@
+:root {
+    --accent: #ff825f;
+    --accent-light: #ffefe9;
+    --accent-border: #ffa88e;
+    --text: #1f1f1f;
+    --muted: #6b6b6b;
+    --line: #ececec;
+    --bg: #fbf9f8;
+    --card: #ffffff;
+    --radius: 18px;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ----- HERO ----- */
+.imagehome {
+    background: var(--bg);
+    padding: 60px 20px 30px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 14px;
+}
+
+.imagehome p {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* ----- BUSCADOR ----- */
+.divsearch {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 20px;
+}
+
+/* ----- CHIPS CIUDADES ----- */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0 20px;
+    background: var(--bg);
+    color: #fff;
+    border-color: var(--bg);
+    justify-content: flex-start;
+}
+
+
+
+.chip {
+    background: var(--brand);
+    color: var(--bg);
+    border: 2px solid var(--bg);
+    border-radius: 40px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+
+.chip:hover {
+    background: var(--bg);
+    color: var(--brand);
+    border: 2px solid var(--brand);
+}
+
+
+/* ----- CONTENIDO / LAYOUT ----- */
+.content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+}
+
+/* ----- SIDEBAR FILTROS ----- */
+.side {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.filtercard {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+.filtercard h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.filtergroup {
+    display: grid;
+    gap: 10px;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+/* ----- FEED ----- */
+.feed {
+    display: grid;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 80px;
+}
+
+.feedcard {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+/* ========== Responsive tweaks (añadir al final) ========== */
+
+/* Desktop grande */
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+    padding: 16px 0 32px;
+  }
+  .imagehome { padding: 56px 20px 28px; }
+}
+
+/* Laptops / tablets horizontales */
+@media (max-width: 992px) {
+  .imagehome { max-width: 820px; }
+  .h1 { font-size: 36px; }
+  .imagehome p { font-size: 17px; max-width: 560px; }
+
+  .content {
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+  }
+
+  .side { top: 16px; }
+  .filtercard { padding: 16px; }
+  .filtercard h3 { font-size: 17px; }
+
+  .feed { max-width: 820px; }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .imagehome { padding: 48px 16px 24px; max-width: 720px; }
+  .h1 { font-size: 32px; }
+  .imagehome p { font-size: 16px; max-width: 520px; }
+
+  .divsearch { margin: 24px auto 18px; }
+
+  /* Layout: sidebar sobre el feed (una columna) */
+  .content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px 12px 32px;
+  }
+  .side {
+    position: static;   /* desactiva sticky en pantallas pequeñas */
+    width: 100%;
+  }
+
+  .feed {
+    max-width: 100%;
+    margin: 0 auto 60px;
+    padding: 0 4px;
+  }
+
+  .chips {
+    gap: 8px;
+    justify-content: center; /* centra chips en tablet */
+    padding: 10px 8px 18px;
+  }
+  .chip {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 32px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .imagehome { padding: 40px 14px 20px; }
+  .h1 { font-size: 28px; line-height: 1.15; margin-bottom: 12px; }
+  .imagehome p { font-size: 15.5px; max-width: 92%; }
+
+  .divsearch { margin: 20px auto 16px; }
+
+  .filtercard { padding: 14px; border-radius: 16px; }
+  .filtergroup { gap: 8px; }
+  .check { font-size: 14px; gap: 8px; }
+  .check input[type="checkbox"] { width: 20px; height: 20px; }
+
+  .feed { gap: 16px; margin-bottom: 48px; }
+
+  .feedcard {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .chips {
+    gap: 8px;
+    padding: 8px 6px 14px;
+  }
+  .chip {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 380px) {
+  .h1 { font-size: 24px; }
+  .imagehome p { font-size: 15px; }
+  .chip { font-size: 0.9rem; padding: 0.5rem 0.85rem; }
+  .filtercard h3 { font-size: 16px; }
+}

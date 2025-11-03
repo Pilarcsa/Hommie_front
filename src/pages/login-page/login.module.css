@@ -1,0 +1,160 @@
+/* ----- Variables & reset ----- */
+:root {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --text: #363737;
+    --muted: #363737;
+    --brand: #FF8462;
+    --brand-ink: #FF8462;
+    --chip: #ffffff;
+    --shadow: 0 6px 18px rgba(0, 0, 0, .08);
+
+
+}
+
+/*section*/
+
+.section {
+    width: 100%;
+    height: 70vh;
+    padding: 5vw;
+    position: relative;
+    gap: 3vh;
+    background-color: var(--bg);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+/*card*/
+
+.card {
+    display: flex;
+    padding: 18px;
+    gap: 12px;
+    align-items: flex-start;
+    border: 1px solid #ececec;
+    background: var(--card);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    flex-direction: column;
+}
+
+/*formfield*/
+
+.formfield {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+
+}
+
+/* Campos de entrada */
+.input {
+    flex: 1;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    border-color: var(--brand);
+    outline: none;
+}
+
+
+/*btn*/
+
+.btn {
+    width: 100%;
+    background: var(--brand);
+    color: var(--bg);
+    border: 2px solid var(--bg);
+    border-radius: 10px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+
+.btn:hover {
+    background: var(--bg);
+    color: var(--brand);
+    border: 2px solid var(--brand);
+}
+
+
+/*h2*/
+
+h2 {
+
+    display: block;
+    padding: 0 10px;
+    margin: 0px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Desktop mediano */
+@media (max-width: 1200px) {
+  .section { height: auto; padding: 4vw; gap: 2.4vh; }
+  .card { max-width: 900px; width: 100%; }
+}
+
+/* Tablets / laptops pequeños */
+@media (max-width: 900px) {
+  .section { padding: 5vw 6vw; gap: 2vh; }
+  .card { border-radius: 20px; padding: 16px; }
+  .formfield { gap: 10px; }
+  h2 { font-size: 21px; }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .section {
+    height: auto;              /* evita cortes en pantallas pequeñas */
+    padding: 6vw 5vw;
+    gap: 1.6vh;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 560px;          /* limita ancho para mejor lectura */
+  }
+
+  .formfield { gap: 8px; }
+
+  .input {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;    /* mejora área táctil */
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 20px;
+    padding: 0 6px;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 380px) {
+  .card { padding: 12px; border-radius: 14px; }
+  .input, .btn { font-size: 0.93rem; }
+  h2 { font-size: 19px; }
+}

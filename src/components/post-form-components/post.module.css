@@ -1,0 +1,259 @@
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #363737;
+  --muted: #363737;
+  --brand: #FF8462;
+  --brand-ink: #FF8462;
+  --chip: #ffffff;
+  --shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+/* ----- layout general ----- */
+.section {
+  position: relative;
+  gap: 3vh;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 60%;
+  padding: 0 2vw 2vw 2vw;
+  align-items: flex-start;
+}
+
+/* ----- tarjeta del formulario ----- */
+.card {
+  display: flex;
+  padding: 18px;
+  gap: 12px;
+  width: 100%;
+  align-items: flex-start;
+  border: 1px solid #ececec;
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  flex-direction: column;
+}
+
+/* ----- grupos y campos ----- */
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-family: inherit;
+}
+
+/* inputs y textarea */
+.input {
+  flex: 1;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+.textarea {
+  width: 100%;
+  height: 20vh;
+  padding: 11px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 15px;
+  resize: none;
+  font-family: inherit;
+}
+
+/* chips (solo / en pareja) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pill:hover {
+  background: var(--brand);
+  color: var(--bg);
+}
+
+.pill.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* botones */
+.divbtn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.btn {
+  background: var(--brand);
+  color: var(--bg);
+  border: 2px solid var(--bg);
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnghost {
+  background: var(--bg);
+  color: var(--brand);
+  border: 2px solid var(--brand);
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--bg);
+  color: var(--brand);
+  border: 2px solid var(--brand);
+}
+
+/* checkboxes */
+.checks {
+  display: grid;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
+  color: var(--bg);
+}
+
+/* títulos */
+h2, .h1 {
+  display: block;
+  padding: 0 10px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+}
+/* ====== Responsivo (añadir al final) ====== */
+
+/* Laptops/medianas */
+@media (max-width: 1200px) {
+  .form { width: 72%; padding: 0 2vw 2.2vw; }
+  .card { padding: 16px; gap: 10px; }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .form { width: 86%; }
+  .card { border-radius: 20px; }
+  .divbtn { flex-wrap: wrap; }
+  .checks { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    align-items: start;
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .section { gap: 2.2vh; }
+  .form { width: 94%; padding: 0 3vw 4vw; }
+
+  .card { 
+    padding: 14px; 
+    gap: 10px; 
+    border-radius: 16px; 
+    box-shadow: var(--shadow);
+  }
+
+  .group { gap: 8px; }
+
+  .label { 
+    margin-bottom: 4px; 
+    font-size: 0.95rem; 
+  }
+
+  .input, .textarea {
+    font-size: 0.95rem;
+  }
+  .textarea { 
+    height: 28vh; 
+  }
+
+  /* Botones: ocupan ancho completo y hacen wrap */
+  .divbtn {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn, .btnghost {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  /* Chips más cómodos al tacto */
+  .pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  /* Checks en columna para evitar cortes */
+  .checks {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .check { gap: 10px; }
+  .check input { width: 20px; height: 20px; }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 380px) {
+  h2, .h1 { font-size: 20px; }
+  .input, .textarea { font-size: 0.93rem; }
+  .pill { font-size: 0.9rem; }
+}

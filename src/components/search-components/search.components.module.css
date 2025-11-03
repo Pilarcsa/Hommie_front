@@ -1,0 +1,157 @@
+/* ----- Variables & reset ----- */
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #363737;
+  --muted: #363737;
+  --brand: #FF8462;
+  --brand-ink: #FF8462;
+  --chip: #ffffff;
+  --shadow: 0 6px 18px rgba(0, 0, 0, .08);
+
+
+}
+
+
+/* --- SEARCH --- */
+
+/* Contenedor principal del buscador */
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 80%;
+  height: auto;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.location {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+
+/* Campos de entrada */
+.input {
+  flex: 1;
+  min-width: 160px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+/* Chips (botones tipo selector) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pill:hover {
+  background: #e5f5f1;
+}
+
+.pill.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Botón principal */
+.btn {
+  background: var(--brand);
+  color:var(--bg);
+  border: 2px solid var(--bg);
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--bg);
+  color: var(--brand);
+  border: 2px solid var(--brand);
+}
+
+
+/* Adaptación móvil */
+@media (max-width: 600px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input {
+    width: 100%;
+  }
+}
+
+
+/* Limita ancho máximo y afina padding en pantallas grandes/medianas */
+.search { max-width: 1100px; }
+
+@media (max-width: 1200px) {
+  .search { width: 90%; padding: 0.9rem; }
+  .input { min-width: 140px; }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .search { width: 94%; gap: 0.6rem; }
+  .location { gap: 0.6rem; }
+}
+
+/* Phablets */
+@media (max-width: 768px) {
+  .search { padding: 0.85rem; }
+  .pill { padding: 0.5rem 0.9rem; font-size: 0.95rem; }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+    width: 96%;
+  }
+  .location { width: 100%; }
+  .input { width: 100%; }
+  .btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+  }
+  /* Asegura que las pills se distribuyan sin romper layout */
+  .location .pill { flex: 0 0 auto; }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 380px) {
+  .search { padding: 0.7rem; border-radius: 10px; }
+  .input { font-size: 0.95rem; }
+  .btn { font-size: 0.95rem; padding: 0.65rem 1rem; }
+}
