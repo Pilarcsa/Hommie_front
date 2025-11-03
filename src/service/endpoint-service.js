@@ -6,7 +6,7 @@ const points = {
     "x2": "https://hommie.onrender.com/api"
 }
 
-const BASE_URL = points.x1 // Base URL actual para las peticiones
+const BASE_URL = points.x2 // Base URL actual para las peticiones
 
 // Definición de todos los endpoints de la API
 export const endPoints = {
