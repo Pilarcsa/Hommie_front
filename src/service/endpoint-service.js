@@ -6,7 +6,7 @@ const points = {
     "x2": "https://hommie.onrender.com/api"
 }
 
-const BASE_URL = points.x2 // Base URL actual para las peticiones
+const BASE_URL = points.x1 // Base URL actual para las peticiones
 
 // Definición de todos los endpoints de la API
 export const endPoints = {
@@ -23,7 +23,7 @@ export const endPoints = {
         // Ruta: GET /post/feed → obtener todos los posts
         getAllPost: "/post/feed",
         // Ruta: GET /post/:id → obtener un post por ID
-        postById: "/post/:id",
+        postById: "/post",
         // Ruta: GET /post/me → obtener los posts del usuario autenticado
         getMyPosts: "/post/me",
         // Ruta dinámica: /post/:id → usada para PATCH o DELETE

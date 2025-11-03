@@ -11,7 +11,7 @@ export const createPost = async (data) =>{ return await fetchApi({endPoint : end
 export const postById = async (postId) =>{ return await fetchApi({endPoint : endPoints.post.replace(":id", postId), method: "GET"}) }
 
 // Ruta: GET /post/me → obtiene los posts del usuario autenticado
-export const getMyPosts = async () =>{ return await fetchApi({endPoint : endPoints.post.getMyPosts, method: "GET"}) }
+export const getMyPosts = async () =>{ return await fetchApi({endPoint : endPoints.post.postById, method: "GET"}) }
 
 // Ruta: PATCH /post/:id → actualiza un post existente
 export const updatePostById = (postId, data) =>
