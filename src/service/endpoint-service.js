@@ -25,7 +25,7 @@ export const endPoints = {
         // Ruta: GET /post/:id → obtener un post por ID
         postById: "/post/",
         // Ruta: GET /post/me → obtener los posts del usuario autenticado
-        getMyPosts: "/post/me",
+       // getMyPosts: "/post/me",
         // Ruta dinámica: /post/:id → usada para PATCH o DELETE
         byId: (id) => `/post/${id}`, 
     }

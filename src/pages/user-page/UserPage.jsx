@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useUserContext } from '../../context/user-context.jsx';
-import { getMyPosts, deletePostById, updatePostById } from '../../service/api/post-api-service.js';
+import { postById, deletePostById, updatePostById } from '../../service/api/post-api-service.js';
 import PostForm from '../../components/post-form-components/PostForm.jsx';
 import MyPost from '../../components/user-components/MyPost.jsx';
 import styles from './user.module.css';
@@ -30,7 +30,7 @@ const UserPage = () => {
     
     (async () => {
       try {
-        const res = await getMyPosts()
+        const res = await postById()
         setPosts(res.data || [])
       } catch (err) {
         console.error('Error al cargar tus posts:', err)
