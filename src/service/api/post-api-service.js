@@ -8,7 +8,7 @@ export const getAllPost = async () =>{ return await fetchApi({endPoint : endPoin
 export const createPost = async (data) =>{ return await fetchApi({endPoint : endPoints.post.createPost, method: "POST", data}) }
 
 // Ruta: GET /post/:id → obtiene un post por su ID
-export const postById = async (postId) =>{ return await fetchApi({endPoint : endPoints.post.replace(":id", postId), method: "GET"}) }
+export const postById = async (postId) =>{ return await fetchApi({endPoint : endPoints.post.replace("id", postId), method: "GET"}) }
 
 // Ruta: GET /post/me → obtiene los posts del usuario autenticado
 export const getMyPosts = async () =>{ return await fetchApi({endPoint : endPoints.post.postById, method: "GET"}) }
