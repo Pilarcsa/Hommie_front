@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './context/user-context.jsx'
 
 // Punto de entrada principal de la aplicación React
@@ -9,7 +9,7 @@ import { UserProvider } from './context/user-context.jsx'
 createRoot(document.getElementById('root')).render(
 
   // BrowserRouter: habilita la navegación SPA (sin recargar la página)
-  <HashRouter>
+  <BrowserRouter>
     {/* UserProvider: contexto global que gestiona el estado del usuario autenticado */}
     <UserProvider>
       {/* StrictMode: herramienta de desarrollo que detecta errores y malas prácticas */}
@@ -18,6 +18,6 @@ createRoot(document.getElementById('root')).render(
         <App />
       </StrictMode>
     </UserProvider>
-  </HashRouter>
+  </BrowserRouter>
 )
 

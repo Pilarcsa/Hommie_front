@@ -1,5 +1,5 @@
 import './App.css'
-import { Link, Route, Routes, HashRouter } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import HomePage from './pages/home-page/HomePage.jsx'
 import LoginPage from './pages/login-page/LoginPage.jsx'
@@ -86,14 +86,13 @@ function App() {
       </header>
 
       {/* ======= RUTAS ======= */}
-      <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/feed" element={<FeedPage />} />
         <Route path="/profile" element={<UserPage />} />
       </Routes>
-      </HashRouter>
+
       {/* ======= PIE DE PÁGINA ======= */}
       <footer className="footer">
         <div className="links">
