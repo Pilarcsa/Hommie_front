@@ -1,45 +1,34 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import {  Navigate } from 'react-router-dom';
 import { useUserContext } from '../../context/user-context.jsx';
-import { postById, deletePostById, updatePostById } from '../../service/api/post-api-service.js';
+import { getPostsByUserId, deletePostById, updatePostById } from '../../service/api/post-api-service.js';
 import PostForm from '../../components/post-form-components/PostForm.jsx';
 import MyPost from '../../components/user-components/MyPost.jsx';
 import styles from './user.module.css';
 
 // Página de perfil: protege la ruta y carga los posts del usuario autenticado
 const UserPage = () => {
-  const navigate = useNavigate()
+  
   const { user, loading } = useUserContext()
   const [posts, setPosts] = useState([])
   console.log("info del user", user)
   console.log("info del post", setPosts)
   
   // Al montar: si no hay usuario, redirige; si hay, pide sus posts al backend
-    if (!loading && !user) return <Navigate to="/login" replace />
+   if (!loading && !user) return <Navigate to="/login" replace /> 
+useEffect(() => {
+  (async () => {
+    if (!user) return;
+    try {
+      const res = await getPostsByUserId(user._id);
+      setPosts(Array.isArray(res.data) ? res.data : (res.data ? [res.data] : []));
+    } catch (err) {
+      console.error('Error al cargar tus posts:', err);
+      setPosts([]);
+    }
+  })();
+}, [user, loading]);
 
-  useEffect(() => {
-
-    async function fetchData() {
-            try {
-                const res = await MyPost()
-                setPosts(res.data) // almacena la respuesta en el estado
-            } catch (error) {
-                console.log(error)
-            }
-        }
-    
-    (async () => {
-      try {
-        const res = await postById()
-        setPosts(res.data || [])
-      } catch (err) {
-        console.error('Error al cargar tus posts:', err)
-        setPosts([])
-      } 
-
-    })()
-        fetchData()
-  }, [user, loading, navigate])
 
   // Elimina un post y actualiza el estado local sin recargar
   const handleDelete = async (id) => {
@@ -70,7 +59,7 @@ const UserPage = () => {
       alert('Post actualizado con éxito')
     } catch (err) {
       console.error('Error editando post:', err)
-      alert('Hubo un error al actualizar el post ❌')
+      alert('Hubo un error al actualizar el post')
     }
   }
 
@@ -106,10 +95,12 @@ const UserPage = () => {
  <div className={styles.card}>
       <h1>Tus publicaciones</h1>
 
-      {posts.length > 0 ? (
+      {loading ? (
+  <p>Cargando tus publicaciones...</p>
+) : posts.length > 0 ? (
         posts.map(post => (
           <MyPost
-            key={post._id}
+            key={post._id || post.id }
             post={post}
             user={user}
             onDelete={handleDelete}
