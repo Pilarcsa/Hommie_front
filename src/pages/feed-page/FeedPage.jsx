@@ -12,7 +12,7 @@ const FeedPage = () => {
     const [posts, setPosts] = useState([]) // guarda los posts obtenidos
     const navigate = useNavigate()
      console.log("info del user", user)
-    console.log("info del post", setPosts)
+    console.log("info del post", posts)
 
     useEffect(() => {
         async function fetchData() {

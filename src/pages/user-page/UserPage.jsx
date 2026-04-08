@@ -11,9 +11,12 @@ const UserPage = () => {
   
   const { user, loading } = useUserContext()
   const [posts, setPosts] = useState([])
-  console.log("info del user", user)
-  console.log("info del post", setPosts)
   
+console.log('USER:', user);
+console.log('USER ID:', user?._id);
+console.log('POST', posts);
+
+
   // Al montar: si no hay usuario, redirige; si hay, pide sus posts al backend
    if (!loading && !user) return <Navigate to="/login" replace /> 
 useEffect(() => {
@@ -21,7 +24,11 @@ useEffect(() => {
     if (!user) return;
     try {
       const res = await getPostsByUserId(user._id);
+
       setPosts(Array.isArray(res.data) ? res.data : (res.data ? [res.data] : []));
+               console.log('Posts:', res.data);
+               
+                console.log("llegamos hasta aqui!")
     } catch (err) {
       console.error('Error al cargar tus posts:', err);
       setPosts([]);
@@ -29,6 +36,7 @@ useEffect(() => {
   })();
 }, [user, loading]);
 
+console.log("info de los posts", posts)
 
   // Elimina un post y actualiza el estado local sin recargar
   const handleDelete = async (id) => {

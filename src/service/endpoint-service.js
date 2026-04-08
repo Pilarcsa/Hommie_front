@@ -23,8 +23,11 @@ export const endPoints = {
         // Ruta: GET /post/feed → obtener todos los posts
         getAllPost: "/post/feed",
         // Ruta: GET /post/:id → obtener un post por ID
-        getPostsById: (userId) => `/post/${userId}`,
-        getPostsByUserId: (userId) => `/post/user/${userId}`,
+        getPostsByUserId: (userId) =>`/post/${userId}`,
+        // Ruta: GET /post/:id → actualizar un post por ID
+        updatePostById: (postId) =>`/post/${postId}`,
+        // Ruta: GET /post/:id → eliminar un post por ID
+        deletePostById: (postId) =>`/post/${postId}`
 
     }
 }
