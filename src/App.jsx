@@ -5,7 +5,7 @@ import HomePage from './pages/home-page/HomePage.jsx'
 import LoginPage from './pages/login-page/LoginPage.jsx'
 import FeedPage from './pages/feed-page/FeedPage.jsx'
 import UserPage from './pages/user-page/UserPage.jsx'
-
+import logo from "../assets/logo-hommie.png";
 import { PostProvider } from './context/post-context.jsx'
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
       <header className="header">
         {/* Logo clicable */}
      
-          <img  className="logo" to="/" onClick={() => setMenuOpen(false)}  type="image/png" src="/assets/logo-hommie.png" alt="logo-hommie"/>
+          <img  className="logo" to="/" onClick={() => setMenuOpen(false)}  type="image/png" src={logo} alt="logo-hommie"/>
       
         {/* Botón hamburguesa */}
         <button
