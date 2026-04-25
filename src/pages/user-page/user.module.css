@@ -8,8 +8,6 @@
   --brand-ink: #FF8462;
   --chip: #ffffff;
   --shadow: 0 6px 18px rgba(0, 0, 0, .08);
-
-
 }
 
 /* ----- body ----- */
@@ -18,17 +16,19 @@
   flex-direction: row;
   width: 100%;
   padding: 2vw;
-      justify-content: flex-start;
+  justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
+  gap: 24px;
+  background: #faf9f7;
+  min-height: 100vh;
 }
 
 /*section*/
-
 .section {
   position: relative;
-  gap: 3vh;
-  background-color: var(--bg);
+  gap: 20px;
+  background-color: transparent;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -37,81 +37,94 @@
 }
 
 .profile {
-  width: 40%;
-  padding: 0 2vw 2vw 2vw;
- 
+  width: 30%;
+  padding: 0;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
 }
 
 .form {
-  width: 60%;
-  padding: 0 2vw 2vw 2vw;
+  width: 70%;
+  padding: 0;
   align-items: flex-start;
 }
 
-
 /*card*/
-
 .card {
   display: flex;
-  padding: 18px;
+  padding: 24px;
   min-width: 10%;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   align-items: flex-start;
-  border: 1px solid #ececec;
+  border: 1px solid rgba(0,0,0,0.06);
   background: var(--card);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.04);
   flex-direction: column;
+  transition: box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05);
 }
 
 /*formfield*/
-
 .formfield {
   width: 100%;
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-direction: column;
-
 }
-
-
 
 .group {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
+  gap: 8px;
 }
 
 .textarea {
   width: 100%;
   height: 20vh;
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #fff;
+  padding: 12px 14px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fafafa;
   font-size: 15px;
   resize: none;
   font-family: inherit;
-
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
 }
 
+.textarea:focus {
+  border-color: var(--brand);
+  background: #fff;
+  outline: none;
+}
 
 /* Campos de entrada */
 .input {
   flex: 1;
   width: 100%;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.2s;
+  background: #fafafa;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
 }
 
 .input:focus {
   border-color: var(--brand);
+  background: #fff;
   outline: none;
 }
 
@@ -120,39 +133,39 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: #f0f0f0;
-  color: #333;
-  border: 1px solid transparent;
+  background: #f5f5f5;
+  color: #555;
+  border: 1.5px solid transparent;
   border-radius: 999px;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
 }
 
 .pill:hover {
-  background: var(--brand);
-  color: var(--bg);
+  background: #fff0ec;
+  color: var(--brand);
+  border-color: var(--brand);
 }
 
 .pill.active {
   background: var(--brand);
   color: #fff;
+  border-color: var(--brand);
 }
 
 /*h2*/
-
-
 h2 {
-
   display: block;
-  padding: 0 10px;
+  padding: 0 4px;
   margin: 0px;
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
 }
-
-
 
 /* Botón principal */
 .divbtn {
@@ -163,134 +176,144 @@ h2 {
 
 .btn {
   background: var(--brand);
-  color: var(--bg);
-  border: 2px solid var(--bg);
+  color: #fff;
+  border: 2px solid var(--brand);
   border-radius: 10px;
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
 }
 
 .btnghost {
-  background: var(--bg);
+  background: #fff;
   color: var(--brand);
   border: 2px solid var(--brand);
   border-radius: 10px;
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.18s ease;
 }
 
 .btn:hover {
-  background: var(--bg);
-  color: var(--brand);
-  border: 2px solid var(--brand);
+  background: #ff6e45;
+  border-color: #ff6e45;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 132, 98, 0.35);
+}
+
+.btnghost:hover {
+  background: #fff0ec;
+  transform: translateY(-1px);
 }
 
 .label {
   display: block;
-  font-weight: 700;
-  margin-bottom: 6px;
+  font-weight: 600;
+  margin-bottom: 4px;
   font-family: inherit;
+  font-size: 0.9rem;
+  color: #555;
+  letter-spacing: 0.02em;
 }
-
 
 .checks {
   display: grid;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .check {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .check input {
   width: 18px;
   height: 18px;
   accent-color: var(--brand);
-  color: var(--bg);
 }
 
 .name {
-    margin: 0 0 4px;
-    font-size: 18px;
-    font-weight: 800;
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
 }
 
 .me .name {
-    margin: 0;
-    font-weight: 800;
+  margin: 0;
+  font-weight: 800;
 }
 
 .avatar {
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 14px;
-  border: 2px solid var(--accent-light);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 14px rgba(255, 132, 98, 0.25);
+  flex-shrink: 0;
 }
-/* ====== Responsive tweaks (añadir al final) ====== */
 
-/* Desktop mediano */
+/* ====== Responsive tweaks ====== */
+
 @media (max-width: 1200px) {
   .body { padding: 2vw 3vw; }
-  .card { border-radius: 20px; padding: 16px; }
+  .card { border-radius: 18px; padding: 20px; }
 }
 
-/* Tablets / laptops pequeños */
 @media (max-width: 900px) {
   .body {
-    flex-direction: column;      /* apila columnas */
+    flex-direction: column;
     gap: 16px;
     align-items: stretch;
   }
   .profile,
   .form {
-    width: 100%;                 /* bloques a ancho completo */
-    padding: 0 0 2vw 0;
+    width: 100%;
+    padding: 0;
+    position: static;
   }
-
-  .divbtn { flex-wrap: wrap; }   /* botones pueden saltar de línea */
+  .divbtn { flex-wrap: wrap; }
   .checks { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .avatar { width: 120px; height: 120px; border-radius: 12px; }
+  .avatar { width: 72px; height: 72px; }
 }
 
-/* Móviles */
 @media (max-width: 600px) {
-  .section {
-    gap: 2vh;
-    padding: 6vw 5vw;
-  }
+  .body { padding: 16px; gap: 12px; }
+
+  .section { gap: 12px; }
 
   .card {
-    padding: 14px;
+    padding: 16px;
     border-radius: 16px;
   }
 
   .avatar {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;         /* cuadrado fluido sin deformar */
-    border-radius: 14px;
+    width: 64px;
+    height: 64px;
   }
 
-  .formfield { gap: 10px; }
-  .group { gap: 8px; }
+  .formfield { gap: 12px; }
+  .group { gap: 6px; }
 
   .input {
     font-size: 0.95rem;
-    padding: 0.7rem 0.9rem;      /* área táctil mejor */
+    padding: 0.7rem 0.9rem;
   }
-  .textarea { height: 28vh; }
+  .textarea { height: 26vh; }
 
-  h2 { font-size: 20px; padding: 0 6px; }
+  h2 { font-size: 18px; }
 
   .divbtn {
     flex-direction: column;
@@ -304,17 +327,14 @@ h2 {
   }
 
   .checks {
-    grid-template-columns: 1fr;  /* checks en una columna */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
   .check input { width: 20px; height: 20px; }
 }
 
-/* Teléfonos muy pequeños */
 @media (max-width: 380px) {
   .card { padding: 12px; border-radius: 14px; }
   .input, .btn, .btnghost { font-size: 0.93rem; }
-  h2 { font-size: 19px; }
+  h2 { font-size: 17px; }
 }
-
-

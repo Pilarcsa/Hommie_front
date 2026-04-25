@@ -4,27 +4,26 @@ import FeedCardComponents from '../../components/feed-card-components/FeedCardCo
 import SearchComponents from '../../components/search-components/SearchComponents.jsx'
 import { getAllPost } from '../../service/api/post-api-service.js'
 import { useUserContext } from '../../context/user-context.jsx'
-import { useNavigate } from 'react-router-dom'
 
 // Página principal del feed que muestra todos los posts disponibles
 const FeedPage = () => {
-    const { user } = useUserContext()
+    const {user} = useUserContext()
     const [posts, setPosts] = useState([]) // guarda los posts obtenidos
-    const navigate = useNavigate()
-     console.log("info del user", user)
     console.log("info del post", posts)
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const res = await getAllPost()
+                console.log("respuesta completa:", res)
                 setPosts(res.data) // almacena la respuesta en el estado
+
             } catch (error) {
                 console.log(error)
             }
         }
         if (!user) {
-            navigate("/login") // redirige si no hay usuario autenticado
+          console.log("cosis")// redirige si no hay usuario autenticado
         }
         fetchData()
     }, [])

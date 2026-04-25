@@ -1,7 +1,12 @@
 import styles from './feed.card.module.css'
 
 // Componente que muestra la información de un post en forma de tarjeta
-const FeedCard = ({ post, user }) => {
+const FeedCard = ({ post}) => {
+  const author = post.userId 
+  console.log(post.userId)
+   console.log("post completo:", post)        // ← añade esto
+  console.log("post.userId:", post.userId) 
+  console.log("fullName userId del post 0:", post.userId.fullName)
 
   return (
     <>
@@ -34,18 +39,18 @@ const FeedCard = ({ post, user }) => {
         {/* Contenido principal */}
         <div className={styles.item}>
           {/* Avatar del usuario */}
-          <img className={styles.avatar} src={user.avatarUrl} alt={user.fullName} />
+          <img className={styles.avatar} src={author.avatarUrl} alt={author.fullName} />
 
           <div>
             {/* Nombre, edad y ciudad */}
             <h3 className={styles.name}>
-              {user.fullName}
-              {user.age && `, ${user.age}`} · {post.city}
+              {author.fullName}
+              {author.age && `, ${author.age}`} · {post.city}
             </h3>
 
             {/* Ocupación, duración y presupuesto del post */}
             <p className={styles.meta}>
-              {user.ocupation || "Ocupación no especificada"}
+              {author.ocupation || "Ocupación no especificada"}
               {post.duration ? ` · ${post.duration} meses` : ""}
               {post.budget ? ` · ${post.budget} €/mes` : ""}
             </p>
