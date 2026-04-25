@@ -49,10 +49,8 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  height: 40px;
-  background-image: url('/assets/logo-hommie.png');
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 40px;
   object-fit: contain;
 
 }

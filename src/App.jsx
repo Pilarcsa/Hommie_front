@@ -47,8 +47,11 @@ function App() {
       {/* ======= CABECERA ======= */}
       <header className="header">
         {/* Logo clicable */}
-        <link rel="icon" type="image/svg+xml" href="/assets/logo-hommie.png" onClick={() => setMenuOpen(false)}/>
 
+        <Link className="logo" to="/" onClick={() => setMenuOpen(false)}>
+          <img src="/assets/logo-hommie.png" alt="logo-hommie" />
+        </Link>
+   <Link className="logo" to="/" onClick={() => setMenuOpen(false)}></Link>
         {/* Botón hamburguesa */}
         <button
           ref={btnRef}

@@ -26,8 +26,9 @@ const HomePage = () => {
                     <div className={`${styles.card} ${styles.how}`}>
                         <div className={styles.icon} > 
                             <div className={styles.icon}>🔍</div>
-                            <h3>Busca en tu zona</h3>
-                        </div>
+                          </div>  
+                          <h3>Busca en tu zona</h3>
+                        
                         <p className={styles.muted}>Indica dónde y cuándo quieres mudarte.</p>
 
                     </div>
