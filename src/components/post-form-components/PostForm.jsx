@@ -37,6 +37,7 @@ const PostForm = () => {
     const photoUrl = fd.get('photoUrl') || '';
 
     await createPost(post);
+    await 
     formEl.reset();
   };
 

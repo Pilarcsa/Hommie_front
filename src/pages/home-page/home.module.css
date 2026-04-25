@@ -41,7 +41,7 @@ a {
   margin-top: -5vh;
   display: flex;
   justify-content: center;
-  background-image: url('../../assets/imagen\ portada\ 2.png');
+  background-image: url('/assets/imagenportada2.png');
   background-size: cover;
   flex-direction: column;
   align-content: center;
