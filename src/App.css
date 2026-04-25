@@ -45,15 +45,16 @@ header {
 }
 
 /* Logo contenedor y la imagen del logo */
+
 .logo {
   display: flex;
   align-items: center;
-  height: 40px;            /* control maestro del alto del logo */
-}
-.logo img {
+  height: 40px;
+  background-image: url('/assets/logo-hommie.png');
   height: 100%;
   width: auto;
   object-fit: contain;
+
 }
 
 /* Menú principal */
