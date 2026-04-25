@@ -49,7 +49,7 @@ function App() {
         {/* Logo clicable */}
 
         <Link className="logo" to="/" onClick={() => setMenuOpen(false)}>
-          <img src="/assets/logo-hommie.png" alt="logo-hommie" />
+          <img  rel="icon" type="image/svg+xml" src="/assets/logo-hommie.png" alt="logo-hommie"  />
         </Link>
    <Link className="logo" to="/" onClick={() => setMenuOpen(false)}></Link>
         {/* Botón hamburguesa */}
