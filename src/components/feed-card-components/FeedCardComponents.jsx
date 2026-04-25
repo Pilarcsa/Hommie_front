@@ -1,8 +1,8 @@
 import styles from './feed.card.module.css'
 
 // Componente que muestra la información de un post en forma de tarjeta
-const FeedCard = ({ post }) => {
-  const user = post.userId  
+const FeedCard = ({ post, user }) => {
+
   return (
     <>
       <div className={styles.card}>

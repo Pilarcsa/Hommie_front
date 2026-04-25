@@ -73,7 +73,7 @@ const FeedPage = () => {
                         {posts.length > 0
                             ? posts.map(post => (
                                 <div key={post._id}>
-                                    <FeedCardComponents post={post} />
+                                    <FeedCardComponents post={post} user={user} />
                                 </div>
                               ))
                             : (<p>no hay contenido para mostrar</p>)
