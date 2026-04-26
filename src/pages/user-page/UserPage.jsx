@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {  Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useUserContext } from '../../context/user-context.jsx';
 import { getPostsByUserId, deletePostById, updatePostById } from '../../service/api/post-api-service.js';
 import PostForm from '../../components/post-form-components/PostForm.jsx';
@@ -7,36 +7,36 @@ import MyPost from '../../components/user-components/MyPost.jsx';
 import styles from './user.module.css';
 
 // Página de perfil: protege la ruta y carga los posts del usuario autenticado
+// Html generada con ayuda de IA y revisados manualmente
 const UserPage = () => {
-  
+
   const { user, loading } = useUserContext()
   const [posts, setPosts] = useState([])
-  
-console.log('USER:', user);
-console.log('USER ID:', user?._id);
-console.log('POST', posts);
+
+  console.log('USER:', user);
+  console.log('USER ID:', user?._id);
+  console.log('POST', posts);
 
 
   // Al montar: si no hay usuario, redirige; si hay, pide sus posts al backend
-   if (!loading && !user) return <Navigate to="/login" replace /> 
-useEffect(() => {
-  (async () => {
-    if (!user) return;
-    try {
-      const res = await getPostsByUserId(user._id);
+  if (!loading && !user) return <Navigate to="/login" replace />
+  useEffect(() => {
+    (async () => {
+      if (!user) return;
+      try {
+        const res = await getPostsByUserId(user._id);
 
-      setPosts(Array.isArray(res.data) ? res.data : (res.data ? [res.data] : []));
-               console.log('Posts:', res.data);
-               
-                console.log("llegamos hasta aqui!")
-    } catch (err) {
-      console.error('Error al cargar tus posts:', err);
-      setPosts([]);
-    }
-  })();
-}, [user, loading]);
+        setPosts(Array.isArray(res.data) ? res.data : (res.data ? [res.data] : []));
+        console.log('Posts:', res.data);
 
-console.log("info de los posts", posts)
+      } catch (err) {
+        console.error('Error al cargar tus posts:', err);
+        setPosts([]);
+      }
+    })();
+  }, [user, loading]);
+
+  console.log("info de los posts", posts)
 
   // Elimina un post y actualiza el estado local sin recargar
   const handleDelete = async (id) => {
@@ -80,7 +80,7 @@ console.log("info de los posts", posts)
       <section className={`${styles.section} ${styles.profile}`}>
         <div className={styles.card}>
           <div className={styles.card}>
-             <img className={styles.avatar} src={user.avatarUrl} alt={user.fullName} />
+            <img className={styles.avatar} src={user.avatarUrl} alt={user.fullName} />
             <div>
               <p className="name">Hola, {user.fullName}</p>
               <span className="hint">Miembro desde 2024</span>
@@ -100,24 +100,24 @@ console.log("info de los posts", posts)
 
       {/* Listado de mis posts + formulario para publicar uno nuevo */}
       <section className={`${styles.section} ${styles.form}`}>
- <div className={styles.card}>
-      <h1>Tus publicaciones</h1>
+        <div className={styles.card}>
+          <h1>Tus publicaciones</h1>
 
-      {loading ? (
-  <p>Cargando tus publicaciones...</p>
-) : posts.length > 0 ? (
-        posts.map(post => (
-          <MyPost
-            key={post._id || post.id }
-            post={post}
-            user={user}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-          />
-        ))
-      ) : (
-        <p>No has publicado ningún post.</p>
-      )}
+          {loading ? (
+            <p>Cargando tus publicaciones...</p>
+          ) : posts.length > 0 ? (
+            posts.map(post => (
+              <MyPost
+                key={post._id || post.id}
+                post={post}
+                user={user}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+              />
+            ))
+          ) : (
+            <p>No has publicado ningún post.</p>
+          )}
 
         </div>
         <PostForm />

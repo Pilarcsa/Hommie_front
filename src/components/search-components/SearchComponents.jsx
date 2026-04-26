@@ -1,6 +1,7 @@
 import styles from './search.components.module.css'
 
-// Componente de barra de búsqueda para filtrar posts por ubicación, fecha y tipo
+// Componente de barra de búsqueda para filtrar posts por ubicación, fecha y tipo /
+// Html generada con ayuda de IA y revisados manualmente
 const SearchComponents = () => {
     return (
         <>

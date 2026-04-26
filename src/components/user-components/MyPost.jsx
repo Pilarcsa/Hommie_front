@@ -8,7 +8,7 @@ const MyPost = ({ post, user, onDelete, onEdit }) => {
   const handleDelete = () => onDelete?.(post._id)
   const handleEdit = () => onEdit?.(post)
  console.log("user:",user)
- 
+ // Composición generada con ayuda de IA (ChatGPT) y revisados manualmente
    return (
      <>
        <div className={styles.card}>

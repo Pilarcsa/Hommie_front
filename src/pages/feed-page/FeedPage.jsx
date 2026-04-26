@@ -7,7 +7,7 @@ import { useUserContext } from '../../context/user-context.jsx'
 
 // Página principal del feed que muestra todos los posts disponibles
 const FeedPage = () => {
-    const {user} = useUserContext()
+    const { user } = useUserContext()
     const [posts, setPosts] = useState([]) // guarda los posts obtenidos
     console.log("info del post", posts)
 
@@ -23,11 +23,11 @@ const FeedPage = () => {
             }
         }
         if (!user) {
-          console.log("cosis")// redirige si no hay usuario autenticado
+            console.log("cosis")// redirige si no hay usuario autenticado
         }
         fetchData()
     }, [])
-
+// Html generada con ayuda de IA y revisados manualmente
     return (
         <>
             {/* Sección principal de bienvenida */}
@@ -74,7 +74,7 @@ const FeedPage = () => {
                                 <div key={post._id}>
                                     <FeedCardComponents post={post} user={user} />
                                 </div>
-                              ))
+                            ))
                             : (<p>no hay contenido para mostrar</p>)
                         }
                     </div>

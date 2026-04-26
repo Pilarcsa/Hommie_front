@@ -40,7 +40,7 @@ const PostForm = () => {
     await 
     formEl.reset();
   };
-
+// Html generada con ayuda de IA y revisados manualmente
   return (
     <>
       <section className={styles.card}>

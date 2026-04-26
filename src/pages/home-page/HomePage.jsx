@@ -2,6 +2,7 @@ import styles from './home.module.css'
 import SearchComponents from '../../components/search-components/SearchComponents'
 
 // Página de inicio que muestra hero, buscador y secciones informativas
+// Html generada con ayuda de IA y revisados manualmente
 const HomePage = () => {
     return (
         <>
@@ -24,11 +25,11 @@ const HomePage = () => {
                 <h2>Así funciona Hoomie</h2>
                 <div className={styles.grid3}>
                     <div className={`${styles.card} ${styles.how}`}>
-                        <div className={styles.icon} > 
+                        <div className={styles.icon} >
                             <div className={styles.icon}>🔍</div>
-                          </div>  
-                          <h3>Busca en tu zona</h3>
-                        
+                        </div>
+                        <h3>Busca en tu zona</h3>
+
                         <p className={styles.muted}>Indica dónde y cuándo quieres mudarte.</p>
 
                     </div>
@@ -69,50 +70,50 @@ const HomePage = () => {
                 </div>
             </section>
 
-  {/* TESTIMONIOS */}
+            {/* TESTIMONIOS */}
 
-             <section  className={styles.section}>
+            <section className={styles.section}>
 
-      <h2>Historias reales</h2>
-      <div className={styles.grid3}>
-        <div className={`${styles.card} ${styles.who}`}>
-          <p>“Conocí a mi actual compi en RoomMatch. Llevamos un año y seguimos siendo amigos.”</p>
-          <span>Lucía · 27 años · Madrid</span>
-        </div>
-        <div className={`${styles.card} ${styles.who}`}>
-          <p>“Antes era un lío buscar piso y gente afín. Ahora, todo en una app.”</p>
-          <span>Álvaro · 30 años · Valencia</span>
-        </div>
-        <div className={`${styles.card} ${styles.who}`}>
-          <p>“El cuestionario de compatibilidad nos ahorró sorpresas. ¡Repetiría!”</p>
-          <span >Sara · 25 años · Barcelona</span>
-        </div>
-      </div>
-    
-  </section>
+                <h2>Historias reales</h2>
+                <div className={styles.grid3}>
+                    <div className={`${styles.card} ${styles.who}`}>
+                        <p>“Conocí a mi actual compi en RoomMatch. Llevamos un año y seguimos siendo amigos.”</p>
+                        <span>Lucía · 27 años · Madrid</span>
+                    </div>
+                    <div className={`${styles.card} ${styles.who}`}>
+                        <p>“Antes era un lío buscar piso y gente afín. Ahora, todo en una app.”</p>
+                        <span>Álvaro · 30 años · Valencia</span>
+                    </div>
+                    <div className={`${styles.card} ${styles.who}`}>
+                        <p>“El cuestionario de compatibilidad nos ahorró sorpresas. ¡Repetiría!”</p>
+                        <span >Sara · 25 años · Barcelona</span>
+                    </div>
+                </div>
 
-     {/* FAQ (placeholder simple) */}
+            </section>
 
-  <section  className={styles.section}>
-   
-      <h2>Preguntas frecuentes</h2>
-      <div className={styles.grid3}>
-        <div  className={styles.card}>
-          <h3>¿Es gratis?</h3>
-          <p className={styles.muted}>Puedes buscar y chatear gratis. Añade verificación y opciones <em>premium</em> si quieres más
-            visibilidad.</p>
-          </div>
-        <div  className={styles.card}>
-          <h3>¿Cómo funciona el match?</h3>
-          <p className={styles.muted}>Cruzamos tus respuestas de estilo de vida con las de otros usuarios en tu zona.</p>
-        </div>
-        <div  className={styles.card}>
-          <h3>¿Es seguro?</h3>
-          <p className={styles.muted}>Perfiles verificados, reportes y consejos de convivencia para una experiencia segura.</p>
-        </div>
-    
-    </div>
-  </section>
+            {/* FAQ (placeholder simple) */}
+
+            <section className={styles.section}>
+
+                <h2>Preguntas frecuentes</h2>
+                <div className={styles.grid3}>
+                    <div className={styles.card}>
+                        <h3>¿Es gratis?</h3>
+                        <p className={styles.muted}>Puedes buscar y chatear gratis. Añade verificación y opciones <em>premium</em> si quieres más
+                            visibilidad.</p>
+                    </div>
+                    <div className={styles.card}>
+                        <h3>¿Cómo funciona el match?</h3>
+                        <p className={styles.muted}>Cruzamos tus respuestas de estilo de vida con las de otros usuarios en tu zona.</p>
+                    </div>
+                    <div className={styles.card}>
+                        <h3>¿Es seguro?</h3>
+                        <p className={styles.muted}>Perfiles verificados, reportes y consejos de convivencia para una experiencia segura.</p>
+                    </div>
+
+                </div>
+            </section>
 
         </>
 
