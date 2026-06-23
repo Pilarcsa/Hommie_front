@@ -1,12 +1,13 @@
 
 
 // Define los posibles entornos (local y remoto)
-const points = {
-    "x1": "http://localhost:3000/api",
-    "x2": "https://hommie.onrender.com/api"
-}
+const BASE_URL = import.meta.env.VITE_API_BASE
 
-const BASE_URL = import.meta.env.VITE_API_BASE || points.x2 // Base URL actual para las peticiones
+if (!BASE_URL) {
+  const errorMsg = 'Error: Variable VITE_API_BASE no está configurada. Revisa tu archivo .env'
+  console.error(errorMsg)
+  throw new Error(errorMsg)  
+}
 
 // Definición de todos los endpoints de la API
 export const endPoints = {
@@ -55,4 +56,3 @@ export async function fetchApi({ endPoint, method, data }) {
     }
 }
 
-console.log("endpoint-service cargado — endPoints:", JSON.stringify(endPoints, null, 2));

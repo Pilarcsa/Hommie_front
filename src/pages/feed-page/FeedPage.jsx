@@ -9,13 +9,12 @@ import { useUserContext } from '../../context/user-context.jsx'
 const FeedPage = () => {
     const { user } = useUserContext()
     const [posts, setPosts] = useState([]) // guarda los posts obtenidos
-    console.log("info del post", posts)
+
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const res = await getAllPost()
-                console.log("respuesta completa:", res)
                 setPosts(res.data) // almacena la respuesta en el estado
 
             } catch (error) {
