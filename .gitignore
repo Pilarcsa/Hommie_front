@@ -4,7 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
+pnpm-debug.log*npm run build
 lerna-debug.log*
 
 node_modules
@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variables de entorno (NUNCA subir estos archivos)
+.env
+.env.develop
+.env.prod
+.env.local
+.env.*.local
