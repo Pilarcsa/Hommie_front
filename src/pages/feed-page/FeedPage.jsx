@@ -22,7 +22,7 @@ const FeedPage = () => {
             }
         }
         if (!user) {
-            console.log("cosis")// redirige si no hay usuario autenticado
+            console.log("no hay usuario")// redirige si no hay usuario autenticado
         }
         fetchData()
     }, [])

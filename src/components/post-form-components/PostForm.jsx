@@ -1,12 +1,13 @@
 import styles from './post.module.css'
 import { createPost } from '../../service/api/post-api-service.js'
-
+import { useRef } from 'react'
 // Componente de formulario para crear un nuevo post
-const PostForm = () => {
+const PostForm = ({ searchPost }) => {
+
+  const formRef = useRef(null)
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formEl = e.currentTarget;
-    const fd = new FormData(formEl);
+  e.preventDefault();
+  const fd = new FormData(formRef.current)  
 
     // Crea el objeto post con los datos del formulario
     const post = {
@@ -37,8 +38,9 @@ const PostForm = () => {
     const photoUrl = fd.get('photoUrl') || '';
 
     await createPost(post);
-    await 
-    formEl.reset();
+    
+    formRef.current.reset()  
+    if (searchPost) searchPost()  // Actualiza la lista de posts si se pasa la función
   };
 // Html generada con ayuda de IA y revisados manualmente
   return (
@@ -48,8 +50,7 @@ const PostForm = () => {
           <h1 className="h1">Publicar un post</h1>
           <p className="muted">Completa la información del anuncio y publícalo.</p>
         </div>
-
-        <form className={styles.card} onSubmit={handleSubmit} noValidate>
+        <form ref={formRef} className={styles.card} onSubmit={handleSubmit} noValidate>
           {/* Campos principales del post */}
           <div className={styles.group}>
             <label htmlFor="title" className={styles.h2}>Título</label>

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useMemo } from "react";
 import { login } from "../service/api/user-api-service";
-
+import { useNavigate } from "react-router-dom";
 // Creamos un contexto para manejar el estado global del usuario
 const UserContext = createContext();
 
@@ -11,33 +11,36 @@ export const UserProvider = ({ children }) => {
     const [error, setError] = useState(false);
 
     // Estado para almacenar los datos del usuario autenticado
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        // Intenta recuperar el usuario guardado al iniciar la app
+        const saved = localStorage.getItem('hommie_user')
+        return saved ? JSON.parse(saved) : null
+    })
+
+    const navigate = useNavigate()
 
     // Función para hacer login
+
     const loginUser = async (data) => {
-
-        // Llamada a la API de login con los datos del formulario
         const result = await login(data);
-
-        // Si el backend responde con éxito
         if (result?.mensaje === "Inicio de sesión exitoso") {
-
-            // Guardamos el usuario en el estado global
             setUser(result.data.user);
-
+            // Guardar en localStorage para que sobreviva a la recarga
+            localStorage.setItem('hommie_user', JSON.stringify(result.data.user))
         } else {
-
-            // Si hay error, activamos el estado de error
             setError(true)
         }
-
-        // Devolvemos el mensaje de la respuesta (útil para mostrar feedback)
         return result.data.message;
     };
+    const logoutUser = () => {
+        setUser(null)
+        localStorage.removeItem('hommie_user')
+        navigate('/login') // Redirige a la página de login
+    }
 
     // Memoriza el valor del contexto para evitar renders innecesarios
     const value = useMemo(
-        () => ({ user, setUser, loginUser, error }),
+        () => ({ user, setUser, loginUser, logoutUser, error }),
         [user, error]
     );
 

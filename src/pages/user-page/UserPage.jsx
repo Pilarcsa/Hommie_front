@@ -10,20 +10,14 @@ import styles from './user.module.css';
 // Html generada con ayuda de IA y revisados manualmente
 const UserPage = () => {
 
-  const { user, loading } = useUserContext()
+  const { user, loading, logoutUser } = useUserContext()
   const [posts, setPosts] = useState([])
+  // Añadir junto a los otros useState al inicio del componente
+  const [confirmId, setConfirmId] = useState(null)   // id del post a eliminar
+  const [toast, setToast] = useState('')              // mensaje de éxito/error
 
-  console.log('USER:', user);
-  console.log('USER ID:', user?._id);
-  console.log('POST', posts);
-
-
-  // Al montar: si no hay usuario, redirige; si hay, pide sus posts al backend
-  if (!loading && !user) return <Navigate to="/login" replace />
-  useEffect(() => {
-    (async () => {
-      if (!user) return;
-      try {
+    const searchPost = async() => {
+     try {
         const res = await getPostsByUserId(user._id);
 
         setPosts(Array.isArray(res.data) ? res.data : (res.data ? [res.data] : []));
@@ -32,45 +26,68 @@ const UserPage = () => {
       } catch (err) {
         console.error('Error al cargar tus posts:', err);
         setPosts([]);
-      }
+      }}
+
+  // Al montar: si no hay usuario, redirige; si hay, pide sus posts al backend
+  if (!loading && !user) return <Navigate to="/login" replace />
+  useEffect(() => {
+    (async () => {
+      if (!user) return;
+      await searchPost();
     })();
   }, [user, loading]);
 
   console.log("info de los posts", posts)
 
+const showToast = (msg) => {
+    setToast(msg)
+    setTimeout(() => setToast(''), 3000)
+}
+
   // Elimina un post y actualiza el estado local sin recargar
-  const handleDelete = async (id) => {
-    if (!window.confirm('¿Seguro que quieres eliminar este post?')) return
+
+  const handleDelete = (id) => {
+    setConfirmId(id)  // muestra el modal
+  }
+
+  const confirmDelete = async () => {
     try {
-      await deletePostById(id)
-      setPosts(prev => prev.filter(p => p._id !== id))
+      await deletePostById(confirmId)
+      setPosts(prev => prev.filter(p => p._id !== confirmId))
+      showToast('Post eliminado correctamente')
     } catch (err) {
       console.error('Error eliminando post:', err)
+      showToast('Error al eliminar el post')
+    } finally {
+      setConfirmId(null)  // cierra el modal
     }
   }
 
   // Edita título/descr. vía prompt, hace PATCH y sincroniza el estado con la respuesta
-  const handleEdit = async (post) => {
-    const title = prompt('Nuevo título:', post.title)
-    const description = prompt('Nueva descripción:', post.description)
-    if (title == null && description == null) return
-    const payload = {}
-    if (title !== null) payload.title = title
-    if (description !== null) payload.description = description
+  const [editingPost, setEditingPost] = useState(null)
 
-    try {
-      const res = await updatePostById(post._id, payload)
-      const updated = res.data || {}
-      setPosts(prev =>
-        prev.map(p => (p._id === post._id ? { ...p, ...updated } : p))
-      )
-      alert('Post actualizado con éxito')
-    } catch (err) {
-      console.error('Error editando post:', err)
-      alert('Hubo un error al actualizar el post')
-    }
+  const handleEdit = (post) => {
+    setEditingPost({ ...post })  // abre el formulario de edición
   }
 
+  const confirmEdit = async () => {
+    try {
+      const res = await updatePostById(editingPost._id, {
+        title: editingPost.title,
+        description: editingPost.description,
+      })
+      const updated = res.data || {}
+      setPosts(prev =>
+        prev.map(p => (p._id === editingPost._id ? { ...p, ...updated } : p))
+      )
+      showToast('Post actualizado con éxito')
+    } catch (err) {
+      console.error('Error editando post:', err)
+      showToast('Error al actualizar el post')
+    } finally {
+      setEditingPost(null)
+    }
+  }
   if (loading) return <p>Cargando...</p>
 
   return (
@@ -84,6 +101,7 @@ const UserPage = () => {
             <div>
               <p className="name">Hola, {user.fullName}</p>
               <span className="hint">Miembro desde 2024</span>
+              <button className={styles.btnprimary} onClick={logoutUser}>Cerrar perfil</button>
             </div>
           </div>
           <div className="stats">
@@ -120,10 +138,59 @@ const UserPage = () => {
           )}
 
         </div>
-        <PostForm />
+      <PostForm searchPost={searchPost} />
+      
+        {/* Toast de notificación */}
+{toast && (
+    <div className={styles.toast}>
+        {toast}
+    </div>
+)}
+
+{/* Modal de confirmación de borrado */}
+{confirmId && (
+    <div className={styles.modalOverlay}>
+        <div className={`${styles.modalContent} ${styles.confirmModal}`}>
+            <p>¿Seguro que quieres eliminar este post?</p>
+            <div className={styles.confirmButtons}>
+                <button onClick={confirmDelete}>Sí, eliminar</button>
+                <button onClick={() => setConfirmId(null)}>Cancelar</button>
+            </div>
+        </div>
+    </div>
+)}
+
+{/* Modal de edición inline */}
+{editingPost && (
+    <div className={styles.modalOverlay}>
+        <div className={`${styles.modalContent} ${styles.editModal}`}>
+            <h3>Editar post</h3>
+            <label>
+                Título
+                <input
+                    value={editingPost.title}
+                    onChange={e => setEditingPost(p => ({ ...p, title: e.target.value }))}
+                    className={styles.input}
+                />
+            </label>
+            <label>
+                Descripción
+                <textarea
+                    value={editingPost.description}
+                    onChange={e => setEditingPost(p => ({ ...p, description: e.target.value }))}
+                    className={styles.textarea}
+                />
+            </label>
+            <div className={styles.editButtons}>
+                <button onClick={confirmEdit}>Guardar</button>
+                <button onClick={() => setEditingPost(null)}>Cancelar</button>
+            </div>
+        </div>
+    </div>
+)}
       </section>
     </section>
   );
-};
 
+};
 export default UserPage;

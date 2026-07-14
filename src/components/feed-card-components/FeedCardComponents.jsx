@@ -1,5 +1,5 @@
 import styles from './feed.card.module.css'
-
+//tarea pendiente: prop type
 // Componente que muestra la información de un post en forma de tarjeta
 const FeedCard = ({ post }) => {
   const author = post.userId
