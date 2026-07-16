@@ -101,7 +101,7 @@ const showToast = (msg) => {
             <div>
               <p className="name">Hola, {user.fullName}</p>
               <span className="hint">Miembro desde 2024</span>
-              <button className={styles.btnprimary} onClick={logoutUser}>Cerrar perfil</button>
+              <button className={styles.btnghost} onClick={logoutUser}>Cerrar perfil</button>
             </div>
           </div>
           <div className="stats">
